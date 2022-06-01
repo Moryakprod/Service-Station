@@ -1,3 +1,11 @@
-.venv
+__pycache__/**
+.pytest_cache/**
+*.pyc
+/.venv
+.venv/*
 .git
-.gitignore
+.git/**/*
+.vscode
+.vscode/**/*
+.idea
+.idea/**/*
