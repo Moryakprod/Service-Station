@@ -6,7 +6,13 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set work directory
+#Install psql for db_dump
+RUN apt-get update && apt-get upgrade -y\
+    && apt-get install software-properties-common -y\
+    && add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main"\
+    && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -\
+    && apt-get update && apt-get install -y postgresql-client-14
+
 RUN mkdir /code
 WORKDIR /code
 

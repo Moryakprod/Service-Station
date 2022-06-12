@@ -23,7 +23,11 @@ def wait_port_is_open(host, port):
 def run(c):
     host = env("POSTGRES_HOST")
     port = env.int("POSTGRES_PORT")
+
     wait_port_is_open(host, port)
+
+    c.run("./manage.py dbshell < DB_dump.sql")
+    c.run("./manage.py dbshell > DB_dump.sql")
     c.run("./manage.py makemigrations")
     c.run("./manage.py migrate")
     c.run("./manage.py collectstatic --noinput")
