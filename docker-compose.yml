@@ -14,8 +14,6 @@ services:
 
   postgres:
     image: postgres:14
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
     env_file:
       - .env
     environment:
@@ -25,6 +23,3 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     expose:
       - 5432
-
-volumes:
-  postgres_data:

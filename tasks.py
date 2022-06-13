@@ -26,8 +26,8 @@ def run(c):
 
     wait_port_is_open(host, port)
 
+    c.run("./manage.py dbshell < drop_DB.sql")
     c.run("./manage.py dbshell < DB_dump.sql")
-    c.run("./manage.py dbshell > DB_dump.sql")
     c.run("./manage.py makemigrations")
     c.run("./manage.py migrate")
     c.run("./manage.py collectstatic --noinput")
